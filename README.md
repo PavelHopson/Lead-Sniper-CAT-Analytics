@@ -1,20 +1,73 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+
+# Lead Sniper: CAT Analytics
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-3-22B5BF)
+![Gemini AI](https://img.shields.io/badge/Gemini_AI-2.5_Flash-4285F4?logo=google&logoColor=white)
+
+**B2B-аналитическая система для исследования российского рынка переводческих услуг.**
+Поиск и квалификация компаний с выручкой 100M+ руб., анализ проникновения CAT-инструментов (Trados, MemoQ, Smartcat, Memsource), AI-генерация инсайтов через Gemini 2.5 Flash.
+
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## Возможности
 
-View your app in AI Studio: https://ai.studio/apps/drive/1ZZBdVXr75XEm4raECEsqcBJ4YwmdoDHF
+- **Дашборд** -- KPI-карточки (общая выручка, кол-во лидов, проникновение CAT Tools), интерактивные графики Recharts
+- **База данных** -- таблица компаний с ИНН, выручкой, сайтом, выявленным CAT-продуктом и источником данных
+- **AI-инсайты** -- Gemini 2.5 Flash анализирует корреляцию между выручкой и используемым CAT-инструментом
+- **Отчет** -- структурированный проектный отчет по результатам исследования
+- **Консольные логи** -- симуляция процесса парсинга и сканирования (Rusprofile, HH.ru, Habr, VC.ru)
 
-## Run Locally
+## Технологический стек
 
-**Prerequisites:**  Node.js
+| Слой | Технология |
+|------|-----------|
+| UI | React 19, Lucide Icons |
+| Типизация | TypeScript 5.8 |
+| Графики | Recharts 3 |
+| AI | Google Gemini 2.5 Flash (`@google/genai`) |
+| Сборка | Vite 6 |
+| Стили | Tailwind CSS |
 
+## Структура проекта
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```
+├── App.tsx              # Корневой компонент, навигация, AI-анализ
+├── types.ts             # Интерфейсы Company, ViewMode, StatMetric
+├── constants.ts         # Mock-данные: 10 компаний, логи парсера
+├── components/
+│   ├── Analytics.tsx     # PieChart (доля CAT Tools) + BarChart (топ-5 по выручке)
+│   ├── CompanyTable.tsx  # Таблица с данными компаний
+│   ├── ConsoleLog.tsx    # Эмуляция терминальных логов
+│   ├── ProjectReport.tsx # Проектный отчет
+│   └── StatsCard.tsx     # KPI-карточка с иконкой и трендом
+└── services/
+    └── gemini.ts         # Интеграция с Gemini AI API
+```
+
+## Быстрый старт
+
+```bash
+# Клонировать
+git clone https://github.com/PavelHopson/Lead-Sniper-CAT-Analytics.git
+cd Lead-Sniper-CAT-Analytics
+
+# Установить зависимости
+npm install
+
+# Настроить API-ключ
+cp .env.example .env.local
+# Вписать GEMINI_API_KEY в .env.local
+
+# Запустить
+npm run dev
+```
+
+## Лицензия
+
+[MIT](LICENSE) -- 2025 PavelHopson
